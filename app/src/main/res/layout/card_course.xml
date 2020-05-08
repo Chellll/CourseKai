@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="course"
+            type="com.example.coursekai.data.model.Course" />
+        <variable
+            name="authorViewModel"
+            type="com.example.coursekai.viewModel.author.AuthorListViewModel"/>
+        <variable
+            name="author"
+            type="com.example.coursekai.data.model.Author" />
+        <variable
+            name="callback"
+            type="com.example.coursekai.fragment.CardClickCallback" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="10dp"
+            android:onClick="@{()-> callback.onClick(course)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="137dp">
+
+
+                <ImageView
+                    android:id="@+id/ivLogo"
+                    android:layout_width="62dp"
+                    android:layout_height="57dp"
+                    android:padding="5dp"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintCircleRadius="35dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvNameUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:maxWidth="250dp"
+                    android:minLines="1"
+                    android:text="@{course.name}"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/ivLogo"
+                    app:layout_constraintTop_toTopOf="@+id/ivLogo" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{author.name}"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvNameUser"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNameUser" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:paddingLeft="5dp"
+                    android:text="@{course.description}"
+                    android:textStyle="italic"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="@+id/ivLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
